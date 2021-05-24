@@ -45,6 +45,8 @@ public class ContactPage {
 	@FindBy(xpath = "//div[@class=\"alert alert-success\"]")
 	WebElement SuccessMsg;
 
+	@FindBy(id = "telephone-err")
+	WebElement TelephoneErrorMsg;
 	
 	//Initializing the page factory
 	
@@ -124,5 +126,27 @@ public class ContactPage {
 		isSuccessfulMsgDisplayed = successMsg.contains("we appreciate your feedback.");
 	    System.out.println("title ::: " + successMsg);
 		return isSuccessfulMsgDisplayed;
+	}
+
+	public boolean checkValidationErrorsforInvalidDatainMandatoryFields() {
+		// TODO Auto-generated method stub
+		boolean isDataInvalid = false;
+		boolean isValidationErrorApporpriate = false;
+		boolean isEmailInvalid = false;
+		
+		String inValidDataTitle = ErrorTitle.getText();
+	    String invalidEmailMsg = EmailErrorMsg.getText();
+	   
+	    isValidationErrorApporpriate = inValidDataTitle.contentEquals("We welcome your feedback - but we won't get it unless you complete the form correctly.");
+	    isEmailInvalid = invalidEmailMsg.contentEquals("Please enter a valid email");
+		
+		System.out.println("errorTitle " + inValidDataTitle + " flag  " + isValidationErrorApporpriate);
+		System.out.println("errorTitle " + invalidEmailMsg + " flag  " + isEmailInvalid);
+		
+		if(isValidationErrorApporpriate && isEmailInvalid)
+			isDataInvalid = true;
+		
+		System.out.println("Main flag : " + isDataInvalid);
+		return isDataInvalid;
 	}
 }

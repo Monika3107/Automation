@@ -64,6 +64,7 @@ public class ContactPageStepDefinition {
 	    
 		Thread.sleep(2000);
 	}
+	
 	@Then("Check Validation errors are gone")
 	public void check_validation_errors_are_gone() throws InterruptedException {
 	    // Write code here that turns the phrase above into concrete actions
@@ -76,5 +77,11 @@ public class ContactPageStepDefinition {
 	    // Write code here that turns the phrase above into concrete actions
 		Assert.assertTrue(contactPage.checkForSuccesfulSubmissionMsg());
 		Thread.sleep(2000);
+	}
+
+	
+	@Then("Validate errors for invalid data")
+	public void validate_errors_for_invalid_data() {
+		Assert.assertTrue(contactPage.checkValidationErrorsforInvalidDatainMandatoryFields());
 	}
 }
