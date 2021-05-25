@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Assert;
-
-import com.PageObjects.ContactPage;
 import com.PageObjects.ShopPage;
 import com.qa.factory.DriverFactory;
 
@@ -34,8 +32,6 @@ public class ShopPageStepDefinition {
 		for (Map<String, String> columns : rows) {
 	    	String item = columns.get("Item");
 	    	int number = Integer.parseInt(columns.get("Number"));
-	    	System.out.println(" 1 : " + item + " 2 :" + number  );
-	    	
 	    	shopPage.addItemsToCart(item, number);
 	    }
 		Thread.sleep(2000);
@@ -47,8 +43,8 @@ public class ShopPageStepDefinition {
 		Thread.sleep(2000);
 	}
 	
-	@Then("User verifies items in Cart")
-	public void user_verifies_items_in_cart(io.cucumber.datatable.DataTable table) throws InterruptedException {
+	@Then("User verifies items are in Cart")
+	public void user_verifies_items_are_in_cart(io.cucumber.datatable.DataTable table) throws InterruptedException {
 		List<Map<String, String>> rows = table.asMaps(String.class, String.class);
 	    List<String> itemsinCart = new ArrayList<String>();
 	    List<String>  quantityOfItemsinCart = new ArrayList<String>() ;
@@ -56,7 +52,6 @@ public class ShopPageStepDefinition {
 	    for (Map<String, String> columns : rows) {
 	    	String item = columns.get("Item");
 	    	String number = columns.get("Number");
-	    	System.out.println(" 1 : " + item + " 2 :" + number  );
 	    	itemsinCart.add(item);
 	    	quantityOfItemsinCart.add(number);
 	    }

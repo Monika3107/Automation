@@ -39,7 +39,7 @@ public class ContactPageStepDefinition {
 	public void user_clicks_on_submit_button() throws InterruptedException {
 	    // Write code here that turns the phrase above into concrete actions
 		contactPage.clickOnSubmitButton();
-		Thread.sleep(2000);
+		Thread.sleep(10000);
 	}
 	@Then("Validate errors")
 	public void validate_errors() throws InterruptedException {
@@ -57,8 +57,6 @@ public class ContactPageStepDefinition {
 	    	String forename = columns.get("Forename");
 	    	String email = columns.get("Email");
 	    	String message = columns.get("Message");
-	    	System.out.println(" 1 : " + forename + " 2 :" + email + " 3 : " + message );
-	    	
 	    	contactPage.populateManadatoryFields(forename, email, message);
 	    }
 	    
@@ -72,8 +70,8 @@ public class ContactPageStepDefinition {
 		Thread.sleep(2000);
 	}
 
-	@Then("Validate successful submission")
-	public void validate_successful_submission() throws InterruptedException {
+	@Then("Validate successful submission message")
+	public void validate_successful_submission_message() throws InterruptedException {
 	    // Write code here that turns the phrase above into concrete actions
 		Assert.assertTrue(contactPage.checkForSuccesfulSubmissionMsg());
 		Thread.sleep(2000);

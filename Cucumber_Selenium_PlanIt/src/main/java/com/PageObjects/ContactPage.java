@@ -88,16 +88,10 @@ public class ContactPage {
 	    isForenameEmpty = forenameErrorMsg.contentEquals("Forename is required");
 	    isEmailEmpty = emailErrorMsg.contentEquals("Email is required");
 		isMessageBodyEmpty = errorMsg.contentEquals("Message is required");
-		
-		System.out.println("errorTitle " + errorTitle + " flag  " + ismainMsgValid);
-		System.out.println("errorTitle " + forenameErrorMsg + " flag  " + isForenameEmpty);
-		System.out.println("errorTitle " + emailErrorMsg + " flag  " + isEmailEmpty);
-		System.out.println("errorTitle " + errorMsg + " flag  " + isMessageBodyEmpty);
-		
+	
 		if(ismainMsgValid && isForenameEmpty && isEmailEmpty && isMessageBodyEmpty)
 			isErrorValid = true;
 		
-		System.out.println("Main flag : " + isErrorValid);
 		return isErrorValid;
 	}
 	
@@ -113,18 +107,14 @@ public class ContactPage {
 		
 		boolean isValidationMsgDisplayed = false;
 		String title = Title.getText();
-		
 		isValidationMsgDisplayed = title.contentEquals("We welcome your feedback - tell it how it is.");
-	    System.out.println("title ::: " + title);
-		return isValidationMsgDisplayed;
+	    return isValidationMsgDisplayed;
 	}
 	
 	public boolean checkForSuccesfulSubmissionMsg() {
 		boolean isSuccessfulMsgDisplayed = false;
-		String successMsg = SuccessMsg.getText();
-		
+		String successMsg = SuccessMsg.getText();	
 		isSuccessfulMsgDisplayed = successMsg.contains("we appreciate your feedback.");
-	    System.out.println("title ::: " + successMsg);
 		return isSuccessfulMsgDisplayed;
 	}
 
@@ -140,13 +130,9 @@ public class ContactPage {
 	    isValidationErrorApporpriate = inValidDataTitle.contentEquals("We welcome your feedback - but we won't get it unless you complete the form correctly.");
 	    isEmailInvalid = invalidEmailMsg.contentEquals("Please enter a valid email");
 		
-		System.out.println("errorTitle " + inValidDataTitle + " flag  " + isValidationErrorApporpriate);
-		System.out.println("errorTitle " + invalidEmailMsg + " flag  " + isEmailInvalid);
-		
 		if(isValidationErrorApporpriate && isEmailInvalid)
 			isDataInvalid = true;
 		
-		System.out.println("Main flag : " + isDataInvalid);
 		return isDataInvalid;
 	}
 }

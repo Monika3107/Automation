@@ -19,7 +19,7 @@ When User populates mandatory fields
 | Forename | Email                        | Message                     | 
 | Monika   | solankimonika31@gmail.com    | Hi this is a sample message |
 And User clicks on submit button
-Then Validate successful submission
+Then Validate successful submission message
 
 Scenario: Validate invalid data inputs in Contact Page
 Given User navigates to Contact page from Home page
