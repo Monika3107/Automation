@@ -35,5 +35,4 @@ Test case 4:
 3.	Click buy button 1 time on “Fluffy Bunny”
 4.	Click the cart menu
 5.	Verify the items are in the cart
-![image](https://user-images.githubusercontent.com/48540920/119454069-72d32780-bd7b-11eb-80fa-40ed4bb1d5c3.png)
 
