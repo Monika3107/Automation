@@ -1,5 +1,4 @@
-# PlanIt
-Plan IT Testing
+# Automation
 
 This is Project aims to automate below test cases for the website "http://jupiter.cloud.planittesting.com". The solution uses Java 1.8 and Cucumber v6.9 framework.
 
