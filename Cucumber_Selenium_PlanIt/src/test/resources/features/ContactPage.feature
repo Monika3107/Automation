@@ -7,7 +7,7 @@ Given User is already on the Home page
 Scenario: Validate errors on Contact page
 Given User navigates to Contact page from Home page
 When User clicks on submit button
-Then Validate errors 
+Then Validate the errors for "MainError" "Forename" "Email" "Message"
 When User populates mandatory fields
 | Forename | Email                        | Message                     | 
 | Monika   | solankimonika31@gmail.com    | Hi this is a sample message |

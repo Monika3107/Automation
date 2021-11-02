@@ -9,17 +9,17 @@ public class ContactPage {
 	
 	//Web elements
 
-	@FindBy(xpath = "//*[@id=\"nav-home\"]/a")
+	@FindBy(xpath = "//a[text()=\"Home\"]")
 	WebElement HomePageTab;
 	
-	@FindBy(xpath = "//*[@id=\"nav-contact\"]/a")
+	@FindBy(xpath = "//a[text()=\"Contact\"]")
 	WebElement ContactPageTab;
 	
-	@FindBy(xpath = "//a[@class=\"btn-contact btn btn-primary\"]") 
+	@FindBy(xpath = "//a[text()=\"Submit\"]") 
 	WebElement SubmitButton;
 	
-	@FindBy(xpath = "//*[@id=\"header-message\"]/div")
-	WebElement ErrorTitle;
+	@FindBy(xpath = "//div[@id=\"header-message\"]/div")
+	WebElement HeaderMsg;
 	
 	@FindBy(id = "forename-err")
 	WebElement ForenameErrorMsg;
@@ -39,10 +39,7 @@ public class ContactPage {
 	@FindBy(id = "message")
 	WebElement Message;
 	
-	@FindBy(xpath = "//div[@class=\"alert alert-info ng-scope\"]")
-	WebElement Title;
-
-	@FindBy(xpath = "//div[@class=\"alert alert-success\"]")
+	@FindBy(xpath = "//div[@ui-if=\"contactValidSubmit\"]/div")
 	WebElement SuccessMsg;
 
 	@FindBy(id = "telephone-err")
@@ -70,29 +67,35 @@ public class ContactPage {
 		SubmitButton.click();
 	}
 	
-	public boolean validateErrors() {
+	public String getValidationMsgOnContactPage(String field) {
 		
-		boolean isErrorValid = false;
-		boolean ismainMsgValid = false;
-		boolean isForenameEmpty = false;
-		boolean isEmailEmpty = false;
-		boolean isMessageBodyEmpty = false;
+		String validationMsg= null;
 		
+	    switch (field) {
+	    case "MainError":
+			validationMsg= HeaderMsg.getText();
+			System.out.println("Erroor -----------------"+ validationMsg);
+			break;
+			
+		case "Forename":
+			validationMsg= ForenameErrorMsg.getText();
+			System.out.println("Erroor -----------------"+ validationMsg);
+			break;
+
+		case "Email":
+			validationMsg= EmailErrorMsg.getText();
+			System.out.println("Erroor -----------------"+ validationMsg);
+			break;
 		
-		String errorTitle = ErrorTitle.getText();
-		String forenameErrorMsg = ForenameErrorMsg.getText();
-	    String emailErrorMsg = EmailErrorMsg.getText();
-	    String errorMsg = ErrorMsg.getText();
-		
-	    ismainMsgValid = errorTitle.contentEquals("We welcome your feedback - but we won't get it unless you complete the form correctly.");
-	    isForenameEmpty = forenameErrorMsg.contentEquals("Forename is required");
-	    isEmailEmpty = emailErrorMsg.contentEquals("Email is required");
-		isMessageBodyEmpty = errorMsg.contentEquals("Message is required");
+		case "Message":
+			validationMsg= ErrorMsg.getText();
+			System.out.println("Erroor -----------------"+ validationMsg);
+			break;
+		default:
+			break;
+		}
 	
-		if(ismainMsgValid && isForenameEmpty && isEmailEmpty && isMessageBodyEmpty)
-			isErrorValid = true;
-		
-		return isErrorValid;
+		return validationMsg;
 	}
 	
 	public void populateManadatoryFields(String forename, String email, String messsage) {
@@ -103,36 +106,30 @@ public class ContactPage {
 	
 	}
 	
-	public boolean checkValidationErrorsGone() {
-		
-		boolean isValidationMsgDisplayed = false;
-		String title = Title.getText();
-		isValidationMsgDisplayed = title.contentEquals("We welcome your feedback - tell it how it is.");
-	    return isValidationMsgDisplayed;
+	public String getValidationMsgWhenErrorsGone() {
+		System.out.println("headerMsgValue --");
+		String headerMsgValue = HeaderMsg.getText();
+		System.out.println("headerMsgValue -----------------"+ headerMsgValue);
+	    return headerMsgValue;
 	}
 	
-	public boolean checkForSuccesfulSubmissionMsg() {
-		boolean isSuccessfulMsgDisplayed = false;
+	public String checkForSuccesfulSubmissionMsg() {
 		String successMsg = SuccessMsg.getText();	
-		isSuccessfulMsgDisplayed = successMsg.contains("we appreciate your feedback.");
-		return isSuccessfulMsgDisplayed;
+		return successMsg;
 	}
 
-	public boolean checkValidationErrorsforInvalidDatainMandatoryFields() {
-		// TODO Auto-generated method stub
-		boolean isDataInvalid = false;
-		boolean isValidationErrorApporpriate = false;
-		boolean isEmailInvalid = false;
-		
-		String inValidDataTitle = ErrorTitle.getText();
-	    String invalidEmailMsg = EmailErrorMsg.getText();
-	   
-	    isValidationErrorApporpriate = inValidDataTitle.contentEquals("We welcome your feedback - but we won't get it unless you complete the form correctly.");
-	    isEmailInvalid = invalidEmailMsg.contentEquals("Please enter a valid email");
-		
-		if(isValidationErrorApporpriate && isEmailInvalid)
-			isDataInvalid = true;
-		
-		return isDataInvalid;
+	public String getValidationErrorsforInvalidDatainMandatoryFields(String field) {
+		 String invalidEmailMsg = null;
+		 switch (field) {
+
+			case "Email":
+				invalidEmailMsg = EmailErrorMsg.getText();
+				System.out.println("Erroor -----------------"+ invalidEmailMsg);
+				break;
+			
+			default:
+				break;
+			}		
+		return invalidEmailMsg;
 	}
 }
