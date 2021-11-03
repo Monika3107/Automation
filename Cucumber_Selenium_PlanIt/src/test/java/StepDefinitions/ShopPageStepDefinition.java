@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Assert;
+
+import com.PageObjects.CartPage;
 import com.PageObjects.ShopPage;
 import com.qa.factory.DriverFactory;
 
@@ -16,6 +18,7 @@ import io.cucumber.java.en.When;
 public class ShopPageStepDefinition {
 	
 	ShopPage shopPage = new ShopPage(DriverFactory.getDriver());
+	CartPage cartPage = new CartPage(DriverFactory.getDriver());
 	
 	@Given("User navigates to Shop page from Home page")
 	public void user_navigates_to_shop_page_from_home_page() throws InterruptedException {
@@ -39,7 +42,7 @@ public class ShopPageStepDefinition {
 	
 	@When("User clicks on Cart menu")
 	public void user_clicks_on_cart_menu() throws InterruptedException {
-		shopPage.goToCart();
+		cartPage.goToCart();
 		Thread.sleep(2000);
 	}
 	
@@ -56,7 +59,7 @@ public class ShopPageStepDefinition {
 	    	quantityOfItemsinCart.add(number);
 	    }
 	    
-	    Assert.assertTrue(shopPage.verifyItemsAddedInCart(itemsinCart, quantityOfItemsinCart));
+	    Assert.assertTrue(cartPage.verifyItemsAddedInCart(itemsinCart, quantityOfItemsinCart));
 		Thread.sleep(2000);
 	}
 

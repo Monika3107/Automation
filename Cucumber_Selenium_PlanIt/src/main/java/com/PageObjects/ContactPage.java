@@ -8,10 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 public class ContactPage {
 	
 	//Web elements
-
-	@FindBy(xpath = "//a[text()=\"Home\"]")
-	WebElement HomePageTab;
-	
 	@FindBy(xpath = "//a[text()=\"Contact\"]")
 	WebElement ContactPageTab;
 	
@@ -55,9 +51,6 @@ public class ContactPage {
 	}
 	
 	//Actions
-	public void goToHomePage() {
-		HomePageTab.click();
-	}
 	
 	public void goToContactPage() {
 		ContactPageTab.click();
@@ -97,13 +90,29 @@ public class ContactPage {
 	
 		return validationMsg;
 	}
-	
+	/*
 	public void populateManadatoryFields(String forename, String email, String messsage) {
 		
 		Forename.sendKeys(forename);
 		Email.sendKeys(email);
 		Message.sendKeys(messsage);
 	
+	}*/
+	
+	public void populateField(String field, String value) {
+		switch (field) {
+			case "Forename":
+				Forename.sendKeys(value);
+				break;
+				
+			case "Email":
+				Email.sendKeys(value);
+				break;
+			
+			case "Message":
+				Message.sendKeys(value);
+				break;
+		}
 	}
 	
 	public String getValidationMsgWhenErrorsGone() {

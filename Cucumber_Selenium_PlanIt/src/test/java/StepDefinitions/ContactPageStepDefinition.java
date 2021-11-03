@@ -1,17 +1,15 @@
 package StepDefinitions;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 import org.junit.Assert;
 
 import com.PageObjects.ContactPage;
+import com.PageObjects.HomePage;
 import com.qa.factory.DriverFactory;
 import com.qa.util.ConfigReader;
 
-import AppHooks.AppHooks;
-import io.cucumber.datatable.DataTable;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -21,6 +19,7 @@ public class ContactPageStepDefinition {
 	
 	
 	ContactPage contactPage = new ContactPage(DriverFactory.getDriver());
+	HomePage homePage = new HomePage(DriverFactory.getDriver());
 	
 	@Given("User is already on the Home page")
 	public void user_is_already_on_the_home_page() throws InterruptedException {
@@ -29,7 +28,7 @@ public class ContactPageStepDefinition {
 		Properties prop=configReader.init_prop();
 		DriverFactory.getDriver()
 				.get(prop.getProperty("url"));
-		contactPage.goToHomePage();
+		homePage.goToHomePage();
 		Thread.sleep(2000);
 	}
 	
@@ -58,7 +57,11 @@ public class ContactPageStepDefinition {
 		Assert.assertEquals(contactPage.getValidationMsgOnContactPage(Message),"Message is required");
 	}
 
-	
+	@When("User populates field {string} as {string}")
+	public void user_populates_field_as(String field, String value) {
+		contactPage.populateField(field, value);
+	}
+	/*
 	@When("User populates mandatory fields")
 	public void user_populates_mandatory_fields(DataTable table) throws InterruptedException {
 	    
@@ -71,7 +74,7 @@ public class ContactPageStepDefinition {
 	    	String message = columns.get("Message");
 	    	contactPage.populateManadatoryFields(forename, email, message);
 	    }
-	}
+	}*/
 	
 	@Then("Check Validation errors are gone")
 	public void check_validation_errors_are_gone() throws InterruptedException {
