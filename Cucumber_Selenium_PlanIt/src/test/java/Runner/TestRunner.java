@@ -9,7 +9,6 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features = "src//test//resources//features//ShopPage.feature", //Path of feature file
 		glue = {"StepDefinitions","AppHooks"},//Path of Step Definition file
-		//tags= "@JMS",
 		plugin = {"pretty","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				"timeline:test-output-thread/"
 				,"rerun:target/failedrerun.txt"
