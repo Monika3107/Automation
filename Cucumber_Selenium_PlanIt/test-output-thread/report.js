@@ -1,47 +1,47 @@
 $(document).ready(function() {
 CucumberHTML.timelineItems.pushArray([
   {
-    "id": "1e51631c-80cf-48c7-8170-31fe4b7e6e7a",
-    "feature": "Validate Contact Page",
-    "scenario": "Validate errors on Contact page",
-    "start": 1635898121015,
-    "group": 1,
-    "content": "",
-    "tags": "",
-    "end": 1635898145588,
-    "className": "passed"
-  },
-  {
-    "id": "50ea4a3c-5ad1-45c3-800c-e1d24ec75744",
+    "id": "8d641ffd-bc64-4107-bad1-de01e823a4c8",
     "feature": "Validate Contact Page",
     "scenario": "Validate successful submission of feedback on Contact Page",
-    "start": 1635898145598,
+    "start": 1635898892460,
     "group": 1,
     "content": "",
     "tags": "",
-    "end": 1635898168467,
+    "end": 1635898914743,
     "className": "passed"
   },
   {
-    "id": "caaa1821-bd5a-43da-b327-de490dd926bf",
-    "feature": "Validate Shop Page",
-    "scenario": "Validate items in Cart",
-    "start": 1635898180716,
-    "group": 1,
-    "content": "",
-    "tags": "",
-    "end": 1635898199228,
-    "className": "passed"
-  },
-  {
-    "id": "53865512-427c-490e-83bd-3ece5a1f81ad",
+    "id": "80202426-5665-49f9-811b-0c98759bf228",
     "feature": "Validate Contact Page",
     "scenario": "Validate invalid data inputs in Contact Page",
-    "start": 1635898168472,
+    "start": 1635898914748,
     "group": 1,
     "content": "",
     "tags": "",
-    "end": 1635898180708,
+    "end": 1635898927066,
+    "className": "passed"
+  },
+  {
+    "id": "0478058d-6158-4e36-bfca-2187a6960912",
+    "feature": "Validate Shop Page",
+    "scenario": "Validate items in Cart",
+    "start": 1635898927076,
+    "group": 1,
+    "content": "",
+    "tags": "",
+    "end": 1635898949897,
+    "className": "passed"
+  },
+  {
+    "id": "c22a3148-4841-4bc3-88bb-ad86fe737f28",
+    "feature": "Validate Contact Page",
+    "scenario": "Validate errors on Contact page",
+    "start": 1635898868723,
+    "group": 1,
+    "content": "",
+    "tags": "",
+    "end": 1635898892449,
     "className": "passed"
   }
 ]);

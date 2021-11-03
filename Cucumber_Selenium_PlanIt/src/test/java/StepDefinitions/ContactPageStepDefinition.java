@@ -5,9 +5,7 @@ import java.util.Properties;
 import org.junit.Assert;
 
 import com.PageObjects.ContactPage;
-import com.PageObjects.HomePage;
 import com.qa.factory.DriverFactory;
-import com.qa.util.ConfigReader;
 
 
 import io.cucumber.java.en.Given;
@@ -19,19 +17,6 @@ public class ContactPageStepDefinition {
 	
 	
 	ContactPage contactPage = new ContactPage(DriverFactory.getDriver());
-	HomePage homePage = new HomePage(DriverFactory.getDriver());
-	
-	@Given("User is already on the Home page")
-	public void user_is_already_on_the_home_page() throws InterruptedException {
-		
-		ConfigReader configReader = new ConfigReader();
-		Properties prop=configReader.init_prop();
-		DriverFactory.getDriver()
-				.get(prop.getProperty("url"));
-		homePage.goToHomePage();
-		Thread.sleep(2000);
-	}
-	
 	
 	@Given("User navigates to Contact page from Home page")
 	public void user_navigates_to_contact_page_from_home_page() throws InterruptedException {
