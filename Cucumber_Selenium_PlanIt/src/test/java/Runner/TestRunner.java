@@ -7,7 +7,7 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "src//test//resources//features//", //Path of feature file
+		features = "src//test//resources//features//ShopPage.feature", //Path of feature file
 		glue = {"StepDefinitions","AppHooks"},//Path of Step Definition file
 		//tags= "@JMS",
 		plugin = {"pretty","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",

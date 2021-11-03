@@ -14,7 +14,7 @@ public class CartPage {
 	@FindBy(xpath = "//*[@id=\"nav-cart\"]/a")
 	WebElement CartTab;
 	
-	@FindBy(tagName = "table")
+	@FindBy(xpath = "//table[@class='table table-striped cart-items']")
 	WebElement itemTable;
 	
 	//Initializing the page factory
@@ -32,28 +32,27 @@ public class CartPage {
 	
 	public boolean verifyItemsAddedInCart(List<String> items, List<String> numbers) throws InterruptedException {
 		boolean areCartItemsValid = false;
-		
+		WebElement itemBody = itemTable.findElement(By.tagName("tbody"));
+		List<WebElement> rows_table = itemBody.findElements(By.tagName("tr"));
+		String itemName = null,value=null;	
 		for(int listItem = 0; listItem < items.size(); listItem++) {
-			
-			String item = items.get(listItem).toString();
-			String number = numbers.get(listItem).toString();
-			WebElement itemBody = itemTable.findElement(By.tagName("tbody"));
-			List<WebElement> rows_table = itemBody.findElements(By.tagName("tr"));
-			int rows_count = rows_table.size();
-			
-			// Loop will execute till the last row of table.
-			for (int row = 0; row < rows_count; row++) {					
-				WebElement ProductNameElement  = driver.findElement(By.xpath("/html/body/div[2]/div/form/table/tbody/tr["+(row+1)+"]/td[1]"));
-				String productName = ProductNameElement.getText();
-				WebElement productQuantityElement  = driver.findElement(By.xpath("/html/body/div[2]/div/form/table/tbody/tr["+(row+1)+"]/td[3]/input"));													
-				String productQuantity = productQuantityElement.getAttribute("value");					
-				
-				if(productName.contentEquals(item) && productQuantity.contentEquals(number)) {
-					areCartItemsValid = true;					
-					break;
+			if(!rows_table.isEmpty()) {
+				for(int row = 0; row < rows_table.size(); row++) {
+					//System.out.println("tr :: "+tr);
+					itemName = itemBody.findElement(By.xpath("descendant::tr["+(row+1)+"]/td/img/parent::td")).getText();
+					value = itemBody.findElement(By.xpath("descendant::tr["+(row+1)+"]/td/input")).getAttribute("value");
+					if(itemName.contentEquals(items.get(listItem).toString()) && value.contentEquals(numbers.get(listItem).toString())) {
+						areCartItemsValid = true;	
+						break;
+					}else {
+						areCartItemsValid = false;
+					}
 				}
+				
 			}
+	
 		}
+
 		return areCartItemsValid;
-	} 
+	}	
 }

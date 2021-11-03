@@ -16,7 +16,7 @@ public class ShopPage {
 	@FindBy(xpath = "//*[@id=\"nav-shop\"]/a")
 	WebElement ShopPageTab;
 	
-	@FindBy(xpath = "/html/body/div[2]/div/ul") 
+	@FindBy(xpath = "//div[@class='products ng-scope']/child::ul") 
 	WebElement ProductListbody;
 	
 //	WebElement itemBody = driver.findElement(By.xpath("/html/body/div[3]/div/form/table/tbody/tr/td["+(row+1)+"]/img"));
@@ -36,24 +36,10 @@ public class ShopPage {
 	}
 	
 	public void addItemsToCart(String productname, int number) throws InterruptedException {
-		List<WebElement> ProductList = ProductListbody.findElements(By.tagName("li"));
-		int product_count = ProductList.size();
-		
-		// Loop will execute till the last list element
-		for (int product = 0; product < product_count; product++) {
-		
-			WebElement ProductNameWeb = driver.findElement(By.xpath("//*[@id=\"product-"+(product+1)+"\"]/div/h4"));
-			
-			String productNameWeb = ProductNameWeb.getText();
-			if(productNameWeb.equals(productname)) {
-				do {
-					WebElement buyButtonElement= driver.findElement(By.xpath("//*[@id=\"product-"+(product+1)+"\"]/div/p/a"));
-					buyButtonElement.click();
-					number--;
-				}while(number>0);
-				break;
-			}
-		}
+		do {
+			driver.findElement(By.xpath("//h4[text()='"+productname+"']/following-sibling::p/a[text()='Buy']")).click();
+			number--;
+		}while(number>0);
 	}
 	
 }
