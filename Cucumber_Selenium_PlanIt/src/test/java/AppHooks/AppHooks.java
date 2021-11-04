@@ -20,38 +20,29 @@ import io.cucumber.java.Scenario;
 /**
  * Unit test for simple App.
  */
-public class AppHooks {
+public class AppHooks extends Base {
 	private DriverFactory driverFactory;
 	private WebDriver driver;
-	private ConfigReader configReader;
 	Properties prop;
 	
 	@Before(value = "@skip", order = 0)
 	public void skipScenario(Scenario scenario) {
 		System.out.println("Skipped scenario:"+scenario.getName());
+		//to skip the test scenario
 		Assume.assumeTrue(false);
-		
-	}
-	@Before(order=1)
-	public void getProperty() {
-		configReader= new ConfigReader();
-		prop=configReader.init_prop();
 	}
 	
-	@Before(order=2)
+	@Before
 	public void launchBrowser() {
+		prop = getProperty();
 		String browserName= prop.getProperty("browser");
 		driverFactory=new DriverFactory();
 		driver=driverFactory.initDriver(browserName);
 	}
-	
-	@After(order=0)
-	public void quitDriver() {
-		driver.quit();
-	}
-	
-	@After(order=1)
+		
+	@After
 	public void tearDown(Scenario scenario) {
+		quitDriver(driver);
 		if(scenario.isFailed()) {
 			//take screenshot
 			String screenshotName=scenario.getName().replaceAll("", "_");
@@ -60,5 +51,4 @@ public class AppHooks {
 			
 		}
 	}
-
 }

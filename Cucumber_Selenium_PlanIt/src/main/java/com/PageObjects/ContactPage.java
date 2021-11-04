@@ -35,7 +35,7 @@ public class ContactPage {
 	@FindBy(id = "message")
 	WebElement Message;
 	
-	@FindBy(xpath = "//div[@ui-if=\"contactValidSubmit\"]/div")
+	@FindBy(xpath = "//div[@class=\"alert alert-success\"]")
 	WebElement SuccessMsg;
 
 	@FindBy(id = "telephone-err")
@@ -67,22 +67,18 @@ public class ContactPage {
 	    switch (field) {
 	    case "MainError":
 			validationMsg= HeaderMsg.getText();
-			System.out.println("Erroor -----------------"+ validationMsg);
 			break;
 			
 		case "Forename":
 			validationMsg= ForenameErrorMsg.getText();
-			System.out.println("Erroor -----------------"+ validationMsg);
 			break;
 
 		case "Email":
 			validationMsg= EmailErrorMsg.getText();
-			System.out.println("Erroor -----------------"+ validationMsg);
 			break;
 		
 		case "Message":
 			validationMsg= ErrorMsg.getText();
-			System.out.println("Erroor -----------------"+ validationMsg);
 			break;
 		default:
 			break;
@@ -116,10 +112,8 @@ public class ContactPage {
 	}
 	
 	public String getValidationMsgWhenErrorsGone() {
-		System.out.println("headerMsgValue --");
 		String headerMsgValue = HeaderMsg.getText();
-		System.out.println("headerMsgValue -----------------"+ headerMsgValue);
-	    return headerMsgValue;
+		return headerMsgValue;
 	}
 	
 	public String checkForSuccesfulSubmissionMsg() {
@@ -133,7 +127,6 @@ public class ContactPage {
 
 			case "Email":
 				invalidEmailMsg = EmailErrorMsg.getText();
-				System.out.println("Erroor -----------------"+ invalidEmailMsg);
 				break;
 			
 			default:
