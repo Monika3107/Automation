@@ -23,7 +23,6 @@ public class ShopPageStepDefinition {
 	public void user_navigates_to_shop_page_from_home_page() throws InterruptedException {
 		// Write code here that turns the phrase above into concrete actions
 		shopPage.goToShopPage();
-		Thread.sleep(2000);
 	}
 
 	@When("User Click on items to add in cart")
@@ -36,7 +35,6 @@ public class ShopPageStepDefinition {
 			int number = Integer.parseInt(columns.get("Number"));
 			shopPage.addItemsToCart(item, number);
 		}
-		Thread.sleep(2000);
 	}
 
 }

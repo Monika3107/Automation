@@ -1,5 +1,7 @@
 package com.PageObjects;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,10 +10,10 @@ import org.openqa.selenium.support.PageFactory;
 public class ContactPage {
 	
 	//Web elements
-	@FindBy(xpath = "//a[text()=\"Contact\"]")
+	@FindBy(xpath = "//a[text()='Contact']")
 	WebElement ContactPageTab;
 	
-	@FindBy(xpath = "//a[text()=\"Submit\"]") 
+	@FindBy(xpath = "//a[text()='Submit']") 
 	WebElement SubmitButton;
 	
 	@FindBy(xpath = "//div[@id=\"header-message\"]/div")
@@ -116,7 +118,8 @@ public class ContactPage {
 		return headerMsgValue;
 	}
 	
-	public String checkForSuccesfulSubmissionMsg() {
+	public String checkForSuccesfulSubmissionMsg() throws InterruptedException {
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		String successMsg = SuccessMsg.getText();	
 		return successMsg;
 	}

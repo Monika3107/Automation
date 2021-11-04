@@ -13,6 +13,5 @@ public class HomePageStepDefinition {
 	public void user_is_already_on_the_home_page() throws InterruptedException {
 		
 		homePage.goToHomePage();
-		Thread.sleep(2000);
 	}
 }

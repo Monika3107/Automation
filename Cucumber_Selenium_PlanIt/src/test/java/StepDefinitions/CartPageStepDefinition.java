@@ -19,7 +19,6 @@ public class CartPageStepDefinition {
 	@When("User clicks on Cart menu")
 	public void user_clicks_on_cart_menu() throws InterruptedException {
 		cartPage.goToCart();
-		Thread.sleep(2000);
 	}
 
 	@Then("User verifies items are in Cart")
@@ -35,6 +34,5 @@ public class CartPageStepDefinition {
 			quantityOfItemsinCart.add(number);
 		}	  
 		Assert.assertTrue(cartPage.verifyItemsAddedInCart(itemsinCart, quantityOfItemsinCart));
-		Thread.sleep(2000);
 	}
 }

@@ -1,5 +1,7 @@
 package StepDefinitions;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.junit.Assert;
@@ -7,7 +9,7 @@ import org.junit.Assert;
 import com.PageObjects.ContactPage;
 import com.qa.factory.DriverFactory;
 
-
+import io.cucumber.datatable.*;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -30,7 +32,6 @@ public class ContactPageStepDefinition {
 	public void user_clicks_on_submit_button() throws InterruptedException {
 	    // Write code here that turns the phrase above into concrete actions
 		contactPage.clickOnSubmitButton();
-		Thread.sleep(10000);
 	}
 	
 	@Then("Validate the errors for {string} {string} {string} {string}")
@@ -60,6 +61,21 @@ public class ContactPageStepDefinition {
 	    	contactPage.populateManadatoryFields(forename, email, message);
 	    }
 	}*/
+	
+	@When("user populates contact fields")
+	public void user_populates_contact_fields(DataTable dataTable) throws InterruptedException {
+	    // Write code here that turns the phrase above into concrete actions
+	    // For automatic transformation, change DataTable to one of
+	    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+	    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+	    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+	    //
+	    // For other transformations you can register a DataTableType.
+		List<List<String>> rows = dataTable.asLists(String.class);
+		for (List<String> columns : rows) {
+			contactPage.populateField(columns.get(0), columns.get(1));
+		}
+	}
 	
 	@Then("Check Validation errors are gone")
 	public void check_validation_errors_are_gone() throws InterruptedException {
