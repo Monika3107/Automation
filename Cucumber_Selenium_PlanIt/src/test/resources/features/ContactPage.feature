@@ -14,6 +14,7 @@ When user populates contact fields
 | Message | asdhlds |
 Then Check Validation errors are gone
 
+
 Scenario: Validate successful submission of feedback on Contact Page
 Given User navigates to Contact page from Home page
 When user populates contact fields

@@ -1,6 +1,7 @@
 package com.PageObjects;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.xml.xpath.XPath;
 
@@ -13,7 +14,7 @@ import org.openqa.selenium.support.PageFactory;
 public class ShopPage {
 
 	
-	@FindBy(xpath = "//*[@id=\"nav-shop\"]/a")
+	@FindBy(xpath = "//*[@id='nav-shop']/a")
 	WebElement ShopPageTab;
 	
 	@FindBy(xpath = "//div[@class='products ng-scope']/child::ul") 
@@ -33,6 +34,7 @@ public class ShopPage {
 		
 	public void goToShopPage() {
 		ShopPageTab.click();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 	
 	public void addItemsToCart(String productname, int number) throws InterruptedException {

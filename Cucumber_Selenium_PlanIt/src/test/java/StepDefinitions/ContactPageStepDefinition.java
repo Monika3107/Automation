@@ -64,16 +64,16 @@ public class ContactPageStepDefinition {
 	
 	@When("user populates contact fields")
 	public void user_populates_contact_fields(DataTable dataTable) throws InterruptedException {
-	    // Write code here that turns the phrase above into concrete actions
-	    // For automatic transformation, change DataTable to one of
-	    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-	    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-	    // Double, Byte, Short, Long, BigInteger or BigDecimal.
-	    //
-	    // For other transformations you can register a DataTableType.
-		List<List<String>> rows = dataTable.asLists(String.class);
+	   
+		/* Iteration as list
+		 * List<List<String>> rows = dataTable.asLists(String.class);
 		for (List<String> columns : rows) {
 			contactPage.populateField(columns.get(0), columns.get(1));
+		}*/
+		
+		Map<String, String> map = dataTable.asMap(String.class, String.class);
+		for (Map.Entry<String, String> entry : map.entrySet()) {
+			contactPage.populateField(entry.getKey(), entry.getValue());
 		}
 	}
 	
