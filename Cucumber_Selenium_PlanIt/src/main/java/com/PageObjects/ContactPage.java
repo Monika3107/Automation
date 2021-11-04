@@ -88,15 +88,7 @@ public class ContactPage {
 	
 		return validationMsg;
 	}
-	/*
-	public void populateManadatoryFields(String forename, String email, String messsage) {
-		
-		Forename.sendKeys(forename);
-		Email.sendKeys(email);
-		Message.sendKeys(messsage);
-	
-	}*/
-	
+
 	public void populateField(String field, String value) {
 		switch (field) {
 			case "Forename":
@@ -124,7 +116,7 @@ public class ContactPage {
 		return successMsg;
 	}
 
-	public String getValidationErrorsforInvalidDatainMandatoryFields(String field) {
+	/*public String getValidationErrorsforInvalidDatainMandatoryFields(String field) {
 		 String invalidEmailMsg = null;
 		 switch (field) {
 
@@ -136,5 +128,5 @@ public class ContactPage {
 				break;
 			}		
 		return invalidEmailMsg;
-	}
+	}*/
 }

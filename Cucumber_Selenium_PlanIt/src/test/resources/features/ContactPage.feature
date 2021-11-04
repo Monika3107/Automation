@@ -4,17 +4,22 @@ Feature: Validate Contact Page
 Background:
 Given User is already on the Home page
 
+@SmokeTest
 Scenario: Validate errors on Contact page
 Given User navigates to Contact page from Home page
 When User clicks on submit button
-Then Validate the errors for "MainError" "Forename" "Email" "Message"
+#Then Validate the errors for "MainError" "Forename" "Email" "Message"
+Then the following errors appear
+| Field   | Error Message                   |
+| Forname | Please enter a valid forename   |
+| Email   | Please enter your email address |
 When user populates contact fields
 | Forename | Monika |
 | Email | asds@asdasd.asd |
 | Message | asdhlds |
 Then Check Validation errors are gone
 
-
+@SmokeTest
 Scenario: Validate successful submission of feedback on Contact Page
 Given User navigates to Contact page from Home page
 When user populates contact fields
@@ -24,10 +29,13 @@ When user populates contact fields
 And User clicks on submit button
 Then Validate successful submission message
 
+@SmokeTest
 Scenario: Validate invalid data inputs in Contact Page
 Given User navigates to Contact page from Home page
 When user populates contact fields
 | Forename | Monika |
 | Email | asds@asda |
 | Message | asdhlds |
-Then Validate errors for invalid data
+Then the following errors appear
+| Field   | Error Message            |
+| Email | Please enter a valid email |
