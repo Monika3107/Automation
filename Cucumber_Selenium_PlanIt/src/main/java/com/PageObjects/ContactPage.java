@@ -56,6 +56,7 @@ public class ContactPage {
 	
 	public void goToContactPage() {
 		ContactPageTab.click();
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 	}
 	
 	public void clickOnSubmitButton() {

@@ -24,7 +24,6 @@ public class ContactPageStepDefinition {
 	public void user_navigates_to_contact_page_from_home_page() throws InterruptedException {
 	    // 
 	    contactPage.goToContactPage();
-	    Thread.sleep(2000);
 	}
 	
 	
@@ -34,14 +33,6 @@ public class ContactPageStepDefinition {
 		contactPage.clickOnSubmitButton();
 	}
 	
-	/*@Then("Validate the errors for {string} {string} {string} {string}")
-	public void validate_the_errors_for(String MainError, String Forename, String Email, String Message) {
-	    // Write code here that turns the phrase above into concrete actions
-		Assert.assertEquals(contactPage.getValidationMsgOnContactPage(MainError),"We welcome your feedback - but we won't get it unless you complete the form correctly.");
-		Assert.assertEquals(contactPage.getValidationMsgOnContactPage(Forename),"Forename is required");
-		Assert.assertEquals(contactPage.getValidationMsgOnContactPage(Email),"Email is required");
-		Assert.assertEquals(contactPage.getValidationMsgOnContactPage(Message),"Message is required");
-	}*/
 
 	@When("User populates field {string} as {string}")
 	public void user_populates_field_as(String field, String value) {

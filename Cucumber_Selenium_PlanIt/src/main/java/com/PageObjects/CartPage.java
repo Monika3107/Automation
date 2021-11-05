@@ -30,7 +30,12 @@ public class CartPage {
 		CartTab.click();
 	}
 	
-	public boolean verifyItemsAddedInCart(List<String> items, List<String> numbers) throws InterruptedException {
+
+	public String verifyCartitems(String item) {
+		return driver.findElement(By.xpath("//td[contains(text(),'"+item+"')]/following-sibling::td/input")).getAttribute("value");
+	}
+	
+	/*public boolean verifyItemsAddedInCart(List<String> items, List<String> numbers) throws InterruptedException {
 		boolean areCartItemsValid = false;
 		WebElement itemBody = itemTable.findElement(By.tagName("tbody"));
 		List<WebElement> rows_table = itemBody.findElements(By.tagName("tr"));
@@ -55,4 +60,5 @@ public class CartPage {
 
 		return areCartItemsValid;
 	}	
+	*/
 }
