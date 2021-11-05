@@ -37,7 +37,7 @@ public class ShopPage {
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 	
-	public void addItemsToCart(String productname, int number) throws InterruptedException {
+	public void addItemsToCart(String productname, int number) {
 		do {
 			driver.findElement(By.xpath("//h4[text()='"+productname+"']/following-sibling::p/a[text()='Buy']")).click();
 			number--;

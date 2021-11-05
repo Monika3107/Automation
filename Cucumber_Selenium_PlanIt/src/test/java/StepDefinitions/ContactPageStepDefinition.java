@@ -21,14 +21,14 @@ public class ContactPageStepDefinition {
 	ContactPage contactPage = new ContactPage(DriverFactory.getDriver());
 	
 	@Given("User navigates to Contact page from Home page")
-	public void user_navigates_to_contact_page_from_home_page() throws InterruptedException {
+	public void user_navigates_to_contact_page_from_home_page() {
 	    // 
 	    contactPage.goToContactPage();
 	}
 	
 	
 	@When("User clicks on submit button")
-	public void user_clicks_on_submit_button() throws InterruptedException {
+	public void user_clicks_on_submit_button(){
 	    // Write code here that turns the phrase above into concrete actions
 		contactPage.clickOnSubmitButton();
 	}
@@ -40,7 +40,7 @@ public class ContactPageStepDefinition {
 	}
 	
 	@When("user populates contact fields")
-	public void user_populates_contact_fields(DataTable dataTable) throws InterruptedException {
+	public void user_populates_contact_fields(DataTable dataTable){
 	   
 		/* Iteration as list
 		 * List<List<String>> rows = dataTable.asLists(String.class);
@@ -66,13 +66,13 @@ public class ContactPageStepDefinition {
 	}
 	
 	@Then("Check Validation errors are gone")
-	public void check_validation_errors_are_gone() throws InterruptedException {
+	public void check_validation_errors_are_gone(){
 	    // Write code here that turns the phrase above into concrete actions
 		Assert.assertEquals(contactPage.getValidationMsgWhenErrorsGone(),"We welcome your feedback - tell it how it is.");
 	}
 
 	@Then("Validate successful submission message")
-	public void validate_successful_submission_message() throws InterruptedException {
+	public void validate_successful_submission_message(){
 	    // Write code here that turns the phrase above into concrete actions
 		Assert.assertTrue(contactPage.checkForSuccesfulSubmissionMsg().contains("we appreciate your feedback."));
 	}

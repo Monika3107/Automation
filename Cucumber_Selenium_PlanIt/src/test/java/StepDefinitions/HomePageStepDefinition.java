@@ -10,7 +10,7 @@ public class HomePageStepDefinition {
 	HomePage homePage = new HomePage(DriverFactory.getDriver());
 	
 	@Given("User is already on the Home page")
-	public void user_is_already_on_the_home_page() throws InterruptedException {
+	public void user_is_already_on_the_home_page() {
 		
 		homePage.goToHomePage();
 	}

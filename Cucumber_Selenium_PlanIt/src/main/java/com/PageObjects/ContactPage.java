@@ -111,23 +111,10 @@ public class ContactPage {
 		return headerMsgValue;
 	}
 	
-	public String checkForSuccesfulSubmissionMsg() throws InterruptedException {
+	public String checkForSuccesfulSubmissionMsg() {
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		String successMsg = SuccessMsg.getText();	
 		return successMsg;
 	}
 
-	/*public String getValidationErrorsforInvalidDatainMandatoryFields(String field) {
-		 String invalidEmailMsg = null;
-		 switch (field) {
-
-			case "Email":
-				invalidEmailMsg = EmailErrorMsg.getText();
-				break;
-			
-			default:
-				break;
-			}		
-		return invalidEmailMsg;
-	}*/
 }
