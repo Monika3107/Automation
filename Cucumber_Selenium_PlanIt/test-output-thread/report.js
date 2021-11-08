@@ -1,47 +1,47 @@
 $(document).ready(function() {
 CucumberHTML.timelineItems.pushArray([
   {
-    "id": "8a721d8b-7cd4-4fb4-9c96-d8151b8dd395",
-    "feature": "Validate Contact Page",
-    "scenario": "Validate invalid data inputs in Contact Page",
-    "start": 1636078108616,
-    "group": 1,
-    "content": "",
-    "tags": "",
-    "end": 1636078117237,
-    "className": "passed"
-  },
-  {
-    "id": "57944fea-bc53-4044-b3b0-371e3dcb9757",
-    "feature": "Validate Shop Page",
-    "scenario": "Validate items in Cart",
-    "start": 1636078117270,
-    "group": 1,
-    "content": "",
-    "tags": "",
-    "end": 1636078126280,
-    "className": "passed"
-  },
-  {
-    "id": "4d29b499-3d00-4f03-9042-c69b483152a9",
+    "id": "8f773cbc-f6d9-46a6-9d36-77a1e339adb3",
     "feature": "Validate Contact Page",
     "scenario": "Validate errors on Contact page",
-    "start": 1636078087293,
+    "start": 1636334707796,
     "group": 1,
     "content": "",
     "tags": "@smoketest,",
-    "end": 1636078098025,
+    "end": 1636334720039,
     "className": "passed"
   },
   {
-    "id": "9f98607b-bd59-4e8e-9bb4-b71a27d60b72",
-    "feature": "Validate Contact Page",
-    "scenario": "Validate successful submission of feedback on Contact Page",
-    "start": 1636078098044,
+    "id": "1e9e0826-93c7-4332-a0a9-39ec774b28df",
+    "feature": "Validate Shop Page",
+    "scenario": "Validate items in Cart",
+    "start": 1636334740869,
     "group": 1,
     "content": "",
     "tags": "",
-    "end": 1636078108603,
+    "end": 1636334750512,
+    "className": "passed"
+  },
+  {
+    "id": "0bb40651-f93f-4ec9-a0d5-b571e871d4ec",
+    "feature": "Validate Contact Page",
+    "scenario": "Validate invalid data inputs in Contact Page",
+    "start": 1636334731743,
+    "group": 1,
+    "content": "",
+    "tags": "",
+    "end": 1636334740851,
+    "className": "passed"
+  },
+  {
+    "id": "56568b43-edc8-433d-9e6a-ec4600104efe",
+    "feature": "Validate Contact Page",
+    "scenario": "Validate successful submission of feedback on Contact Page",
+    "start": 1636334720049,
+    "group": 1,
+    "content": "",
+    "tags": "",
+    "end": 1636334731738,
     "className": "passed"
   }
 ]);

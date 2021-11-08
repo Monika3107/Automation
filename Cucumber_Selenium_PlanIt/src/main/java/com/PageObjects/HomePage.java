@@ -15,23 +15,23 @@ public class HomePage {
 	//Web elements
 
 	@FindBy(xpath = "//a[text()=\"Home\"]")
-	WebElement HomePageTab;
+	private static WebElement HomePageTab;
 	
 	//Initializing the page factory
 	
 	private WebDriver driver;
-		
+	ConfigReader configReader = new ConfigReader();
+	Properties prop=configReader.init_prop();
+	
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
+		DriverFactory.getDriver()
+		.get(prop.getProperty("url"));
 	}
 		
 	//Actions
 	public void goToHomePage() {
-		ConfigReader configReader = new ConfigReader();
-		Properties prop=configReader.init_prop();
-		DriverFactory.getDriver()
-				.get(prop.getProperty("url"));
 		HomePageTab.click();	
 	}
 }

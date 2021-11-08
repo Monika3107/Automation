@@ -12,10 +12,10 @@ public class CartPage {
 	//Web elements
 	
 	@FindBy(xpath = "//*[@id=\"nav-cart\"]/a")
-	WebElement CartTab;
+	private static WebElement CartTab;
 	
 	@FindBy(xpath = "//table[@class='table table-striped cart-items']")
-	WebElement itemTable;
+	private static WebElement itemTable;
 	
 	//Initializing the page factory
 		

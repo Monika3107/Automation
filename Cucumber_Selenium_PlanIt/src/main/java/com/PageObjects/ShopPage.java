@@ -15,10 +15,10 @@ public class ShopPage {
 
 	
 	@FindBy(xpath = "//*[@id='nav-shop']/a")
-	WebElement ShopPageTab;
+	private static WebElement ShopPageTab;
 	
 	@FindBy(xpath = "//div[@class='products ng-scope']/child::ul") 
-	WebElement ProductListbody;
+	private static WebElement ProductListbody;
 	
 //	WebElement itemBody = driver.findElement(By.xpath("/html/body/div[3]/div/form/table/tbody/tr/td["+(row+1)+"]/img"));
 	

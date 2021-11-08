@@ -11,37 +11,37 @@ public class ContactPage {
 	
 	//Web elements
 	@FindBy(xpath = "//a[text()='Contact']")
-	WebElement ContactPageTab;
+	private static WebElement ContactPageTab;
 	
 	@FindBy(xpath = "//a[text()='Submit']") 
-	WebElement SubmitButton;
+	private static WebElement SubmitButton;
 	
 	@FindBy(xpath = "//div[@id=\"header-message\"]/div")
-	WebElement HeaderMsg;
+	private static WebElement HeaderMsg;
 	
 	@FindBy(id = "forename-err")
-	WebElement ForenameErrorMsg;
+	private static WebElement ForenameErrorMsg;
 	
 	@FindBy(id = "email-err")
-	WebElement EmailErrorMsg;
+	private static WebElement EmailErrorMsg;
 	
 	@FindBy(id = "message-err")
-	WebElement ErrorMsg;
+	private static WebElement ErrorMsg;
 	
 	@FindBy(id = "forename")
-	WebElement Forename;
+	private static WebElement Forename;
 	
 	@FindBy(id = "email")
-	WebElement Email;
+	private static WebElement Email;
 	
 	@FindBy(id = "message")
-	WebElement Message;
+	private static WebElement Message;
 	
 	@FindBy(xpath = "//div[@class=\"alert alert-success\"]")
-	WebElement SuccessMsg;
+	private static WebElement SuccessMsg;
 
 	@FindBy(id = "telephone-err")
-	WebElement TelephoneErrorMsg;
+	private static WebElement TelephoneErrorMsg;
 	
 	//Initializing the page factory
 	
