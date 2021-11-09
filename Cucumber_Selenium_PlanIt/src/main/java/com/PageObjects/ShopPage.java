@@ -30,11 +30,11 @@ public class ShopPage {
 	public ShopPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);		
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 		
 	public void goToShopPage() {
 		ShopPageTab.click();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 	
 	public void addItemsToCart(String productname, int number) {

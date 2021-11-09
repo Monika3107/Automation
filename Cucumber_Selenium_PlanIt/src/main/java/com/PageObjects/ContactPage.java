@@ -50,17 +50,18 @@ public class ContactPage {
 	public ContactPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
 	//Actions
 	
 	public void goToContactPage() {
 		ContactPageTab.click();
-		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 	}
 	
-	public void clickOnSubmitButton() {
+	public ContactPage clickOnSubmitButton() {
 		SubmitButton.click();
+		return new ContactPage(driver);
 	}
 	
 	public String getValidationMsgOnContactPage(String field) {
@@ -112,7 +113,6 @@ public class ContactPage {
 	}
 	
 	public String checkForSuccesfulSubmissionMsg() {
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		String successMsg = SuccessMsg.getText();	
 		return successMsg;
 	}

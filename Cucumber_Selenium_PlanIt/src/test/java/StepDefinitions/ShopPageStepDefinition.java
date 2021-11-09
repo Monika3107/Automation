@@ -33,5 +33,4 @@ public class ShopPageStepDefinition {
 			shopPage.addItemsToCart(item, number);
 		}
 	}
-
 }

@@ -2,7 +2,7 @@
 Feature: Validate Contact Page
 
 Background:
-Given User is already on the Home page
+Given user is already on the Home page
 
 @SmokeTest
 Scenario: Validate errors on Contact page

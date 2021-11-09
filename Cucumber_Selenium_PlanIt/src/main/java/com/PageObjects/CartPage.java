@@ -1,5 +1,6 @@
 package com.PageObjects;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -12,10 +13,13 @@ public class CartPage {
 	//Web elements
 	
 	@FindBy(xpath = "//*[@id=\"nav-cart\"]/a")
-	private static WebElement CartTab;
+	private static WebElement cartTab;
 	
 	@FindBy(xpath = "//table[@class='table table-striped cart-items']")
 	private static WebElement itemTable;
+	
+	@FindBy(xpath = "//a[text()='Yes'][@class='btn btn-success']")
+	private static WebElement confirmRemove;
 	
 	//Initializing the page factory
 		
@@ -27,38 +31,34 @@ public class CartPage {
 	}
 			
 	public void goToCart() {
-		CartTab.click();
+		cartTab.click();
 	}
 	
 
-	public String verifyCartitems(String item) {
+	public String getItemQuantity(String item) {
 		return driver.findElement(By.xpath("//td[contains(text(),'"+item+"')]/following-sibling::td/input")).getAttribute("value");
 	}
 	
-	/*public boolean verifyItemsAddedInCart(List<String> items, List<String> numbers) throws InterruptedException {
-		boolean areCartItemsValid = false;
-		WebElement itemBody = itemTable.findElement(By.tagName("tbody"));
-		List<WebElement> rows_table = itemBody.findElements(By.tagName("tr"));
-		String itemName = null,value=null;	
-		for(int listItem = 0; listItem < items.size(); listItem++) {
-			if(!rows_table.isEmpty()) {
-				for(int row = 0; row < rows_table.size(); row++) {
-					//System.out.println("tr :: "+tr);
-					itemName = itemBody.findElement(By.xpath("descendant::tr["+(row+1)+"]/td/img/parent::td")).getText();
-					value = itemBody.findElement(By.xpath("descendant::tr["+(row+1)+"]/td/input")).getAttribute("value");
-					if(itemName.contentEquals(items.get(listItem).toString()) && value.contentEquals(numbers.get(listItem).toString())) {
-						areCartItemsValid = true;	
-						break;
-					}else {
-						areCartItemsValid = false;
-					}
-				}
-				
-			}
+	public void removeItemFromCart(String item) {
+		WebElement removeItemButton = driver.findElement(By.xpath("//td[contains(text(),'"+item+"')]/following-sibling::td/ng-confirm[@title='Remove Item']"));
+		removeItemButton.click();
+		confirmRemove.click();
+	}
 	
+	public boolean verifyItemIsPresentInCart(String item) {	
+		return (getItemsPresentInCart().contains(item));	
+	}
+	
+	public List<String> getItemsPresentInCart(){
+		List<String> itemsInCart = new ArrayList<String>();
+		/* get items present in the cart */
+		WebElement tableBody = itemTable.findElement(By.tagName("tbody"));
+		List<WebElement> items = tableBody.findElements(By.tagName("tr"));
+			if(!items.isEmpty()) {
+				for(int row = 0; row < items.size(); row++) {
+					itemsInCart.add(tableBody.findElement(By.xpath("descendant::tr["+(row+1)+"]/td/img/parent::td")).getText());
+				}
 		}
-
-		return areCartItemsValid;
-	}	
-	*/
+		return itemsInCart;
+	}
 }

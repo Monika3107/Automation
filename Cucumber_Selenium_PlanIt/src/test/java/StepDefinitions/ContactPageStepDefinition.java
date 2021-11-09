@@ -1,5 +1,6 @@
 package StepDefinitions;
 
+import static org.junit.Assert.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -9,6 +10,7 @@ import org.junit.Assert;
 import com.PageObjects.ContactPage;
 import com.qa.factory.DriverFactory;
 
+import AppHooks.Base;
 import io.cucumber.datatable.*;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -61,20 +63,20 @@ public class ContactPageStepDefinition {
 		for (Map<String, String> columns : rows) {
 	    	String field = columns.get("Field");
 	    	String errorMsg = columns.get("Error Message");
-	    	Assert.assertEquals(errorMsg,contactPage.getValidationMsgOnContactPage(field));
+	    	assertEquals(errorMsg,contactPage.getValidationMsgOnContactPage(field));
 	    }
 	}
 	
 	@Then("Check Validation errors are gone")
 	public void check_validation_errors_are_gone(){
 	    // Write code here that turns the phrase above into concrete actions
-		Assert.assertEquals(contactPage.getValidationMsgWhenErrorsGone(),"We welcome your feedback - tell it how it is.");
+		assertEquals(contactPage.getValidationMsgWhenErrorsGone(),"We welcome your feedback - tell it how it is.");
 	}
 
 	@Then("Validate successful submission message")
 	public void validate_successful_submission_message(){
 	    // Write code here that turns the phrase above into concrete actions
-		Assert.assertTrue(contactPage.checkForSuccesfulSubmissionMsg().contains("we appreciate your feedback."));
+		assertTrue(contactPage.checkForSuccesfulSubmissionMsg().contains("we appreciate your feedback."));
 	}
 
 	

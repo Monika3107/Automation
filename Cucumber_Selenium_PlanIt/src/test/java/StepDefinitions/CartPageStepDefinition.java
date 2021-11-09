@@ -1,5 +1,6 @@
 package StepDefinitions;
 
+import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import org.junit.Assert;
 import com.PageObjects.CartPage;
 import com.qa.factory.DriverFactory;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -16,17 +18,36 @@ public class CartPageStepDefinition {
 
 	CartPage cartPage = new CartPage(DriverFactory.getDriver());
 
-	@When("User clicks on Cart menu")
-	public void user_clicks_on_cart_menu() {
+	@When("user clicks on Cart Tab")
+	public void user_clicks_on_cart_tab() {
 		cartPage.goToCart();
 	}
 
 	@Then("User verifies items are in Cart")
-	public void user_verifies_items_are_in_cart(io.cucumber.datatable.DataTable table) {
+	public void user_verifies_items_are_in_cart(DataTable table) {
 		List<Map<String, String>> rows = table.asMaps(String.class, String.class);
 		
 		for (Map<String, String> columns : rows) {
-			Assert.assertEquals(columns.get("Number"), cartPage.verifyCartitems(columns.get("Item")));
+			assertEquals(columns.get("Number"), cartPage.getItemQuantity(columns.get("Item")));
+		}
+	}
+	
+	@Then("user removes item {string} from cart")
+	public void user_removes_item_from_cart(String item) {
+		cartPage.removeItemFromCart(item);
+		System.out.println(item + "removed.........");
+	}
+
+	@Then("user verifies item {string} is removed")
+	public void user_verifies_item_is_removed(String string) {
+		assertTrue(!cartPage.verifyItemIsPresentInCart("Handmade Doll"));
+	}
+	
+	@Then("user verifies other items are in cart")
+	public void user_verifies_other_items_are_in_cart(DataTable table) {
+		List<String> items = table.asList(String.class);		
+		for (String item : items) {
+			assertTrue(cartPage.verifyItemIsPresentInCart((item)));
 		}
 	}
 }
