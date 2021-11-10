@@ -1,22 +1,21 @@
 package StepDefinitions;
 
 import static org.junit.Assert.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import org.junit.Assert;
-
 import com.PageObjects.CartPage;
 import com.qa.factory.DriverFactory;
-
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.When;	
 
 public class CartPageStepDefinition {
 
 	CartPage cartPage = new CartPage(DriverFactory.getDriver());
+	private World world;
+	public CartPageStepDefinition(World world) {
+        this.world = world;
+    }
 
 	@When("user clicks on Cart Tab")
 	public void user_clicks_on_cart_tab() {
@@ -50,4 +49,13 @@ public class CartPageStepDefinition {
 			assertTrue(cartPage.verifyItemIsPresentInCart((item)));
 		}
 	}
+
+	@Then("user verifies pricing of items in the cart")
+	public void user_verifies_pricing_of_items_in_the_cart(DataTable table) {
+		List<String> items = table.asList(String.class);		
+		for (String item : items) {
+			assertEquals(world.itemsFromShopPage.get(item),cartPage.getPriceOfItemInCart(item));
+		}
+	}
+
 }

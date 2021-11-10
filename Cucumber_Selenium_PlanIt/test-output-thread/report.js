@@ -1,14 +1,14 @@
 $(document).ready(function() {
 CucumberHTML.timelineItems.pushArray([
   {
-    "id": "6c986ba9-ca7a-4ee9-bf52-25165fc77caa",
+    "id": "f28a0095-30b6-47b7-809e-3c5aa351a908",
     "feature": "Validate Shop Page",
-    "scenario": "Validate cart",
-    "start": 1636417792599,
+    "scenario": "Price validation",
+    "start": 1636509596547,
     "group": 1,
     "content": "",
     "tags": "@smoketest,",
-    "end": 1636417802432,
+    "end": 1636509611087,
     "className": "passed"
   }
 ]);

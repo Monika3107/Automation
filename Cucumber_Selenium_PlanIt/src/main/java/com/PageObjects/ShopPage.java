@@ -44,4 +44,14 @@ public class ShopPage {
 		}while(number>0);
 	}
 	
+	public String getPrice(String productname, int number) {
+		Double productPrice = 0.0;
+		do {
+			productPrice += Double.parseDouble(driver.findElement(By.xpath("//h4[text()='"+productname+"']/following-sibling::p/span")).getText().substring(1));
+			number--;
+			
+		}while(number>0);
+		return "$"+Double.toString(productPrice);
+	}
+	
 }

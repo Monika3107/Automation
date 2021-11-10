@@ -61,4 +61,8 @@ public class CartPage {
 		}
 		return itemsInCart;
 	}
+	
+	public String getPriceOfItemInCart(String item) {
+		return driver.findElement(By.xpath("//td[contains(text(),'"+item+"')]/following-sibling::td[3]")).getText();
+	}
 }
