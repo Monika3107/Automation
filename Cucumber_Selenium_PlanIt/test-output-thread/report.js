@@ -1,25 +1,14 @@
 $(document).ready(function() {
 CucumberHTML.timelineItems.pushArray([
   {
-    "id": "63219d2b-9cb3-4040-b21d-2065ee2ddff5",
+    "id": "d899ac5f-19ae-45da-9a41-90a502ab9c9b",
     "feature": "Validate Shop Page",
-    "scenario": "Update Quantity Validation Test",
-    "start": 1636520409288,
+    "scenario": "Checkout Process",
+    "start": 1637197267383,
     "group": 1,
     "content": "",
     "tags": "@smoketest,",
-    "end": 1636520424262,
-    "className": "passed"
-  },
-  {
-    "id": "4565795b-699a-4461-b8b2-18d070547c26",
-    "feature": "Validate Shop Page",
-    "scenario": "Price validation",
-    "start": 1636520391764,
-    "group": 1,
-    "content": "",
-    "tags": "@smoketest,",
-    "end": 1636520409270,
+    "end": 1637197299469,
     "className": "passed"
   }
 ]);

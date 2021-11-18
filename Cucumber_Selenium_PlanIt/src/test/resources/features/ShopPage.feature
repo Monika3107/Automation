@@ -31,7 +31,6 @@ Feature: Validate Shop Page
       | Fluffy Bunny |
 
   #exercise 11
-    @SmokeTest
   Scenario: Price validation
     Given User navigates to Shop page from Home page
     When User Click on items to add in cart and store price
@@ -40,12 +39,11 @@ Feature: Validate Shop Page
       | Valentine Bear |        1 |
     Then user clicks on Cart Tab
     And user verifies pricing of items in the cart
-      |  Item           | Quantity |
+      | Item           | Quantity |
       | Stuffed Frog   |        1 |
       | Valentine Bear |        1 |
-      
+
   #exercise 12
-  @SmokeTest
   Scenario: Update Quantity Validation Test
     Given User navigates to Shop page from Home page
     When User Click on items to add in cart and store price
@@ -61,3 +59,24 @@ Feature: Validate Shop Page
       | Item           | Quantity |
       | Stuffed Frog   |        5 |
       | Valentine Bear |       11 |
+
+  @SmokeTest
+  Scenario: Checkout Process
+    Given User navigates to Shop page from Home page
+    When User Click on items to add in cart and store price
+      | Item           | Quantity |
+      | Stuffed Frog   |        1 |
+      | Valentine Bear |        1 |
+    And user clicks on Cart Tab
+    And user clicks on Checkout button
+    And user enter delivery details
+      | Forename  | Monika                            |
+      | Surname   | Solanki                           |
+      | Email     | asd@asd.asd                       |
+      | Telephone | 0456826485                        |
+      | Address   | 4/78 Royal Ave, Carlton, VIC 3005 |
+    And user enter payment details
+      | Card Type   | Visa             |
+      | Card Number | 1234564878967412 |
+    And user clicks on Submit button
+   Then user succesfully checks out

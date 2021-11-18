@@ -2,12 +2,14 @@ package com.PageObjects;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class CartPage {
 	//Web elements
@@ -21,13 +23,22 @@ public class CartPage {
 	@FindBy(xpath = "//a[text()='Yes'][@class='btn btn-success']")
 	private static WebElement confirmRemove;
 	
+	@FindBy(xpath = "//a[text()='Check Out']")
+	private static WebElement checkOutButton;
 	//Initializing the page factory
+	
+	@FindBy(id = "checkout-submit-btn")
+	private static WebElement submitButton;
+	
+	@FindBy(xpath = "//div[@class=\"alert alert-success\"]")
+	private static WebElement SuccessMsg;
 		
 	private WebDriver driver;
 			
 	public CartPage(WebDriver driver) {
 		this.driver = driver;
-		PageFactory.initElements(driver, this);		
+		PageFactory.initElements(driver, this);	
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
 	}
 			
 	public void goToCart() {
@@ -70,4 +81,27 @@ public class CartPage {
 		driver.findElement(By.xpath("//td[contains(text(),'"+item+"')]/following-sibling::td/input[@name='quantity']")).clear();
 		driver.findElement(By.xpath("//td[contains(text(),'"+item+"')]/following-sibling::td/input[@name='quantity']")).sendKeys(quantity);
 	}
+	
+	public void clickOnCheckOut() {
+		checkOutButton.click();
+	}
+	
+	public void populateField(String field, String value) {
+		if(field.equalsIgnoreCase("Card Type"))
+			new Select(driver.findElement(By.xpath("//label[contains(text(),'"+field+"')]/following-sibling::div/select"))).selectByValue(value);
+		else if(field.equalsIgnoreCase("Address"))
+			driver.findElement(By.xpath("//label[contains(text(),'"+field+"')]/following-sibling::div/textarea")).sendKeys(value);
+		else
+			driver.findElement(By.xpath("//label[contains(text(),'"+field+"')]/following-sibling::div/input")).sendKeys(value);
+	}
+	
+	public void submitDeliveryandPaymentDetails() {
+		submitButton.click();
+	}
+	
+	public String getSuccesfulCheckoutMsg() {
+		String successMsg = SuccessMsg.getText();	
+		return successMsg;
+	}
+
 }

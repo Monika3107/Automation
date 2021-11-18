@@ -20,6 +20,9 @@ public class ShopPage {
 	@FindBy(xpath = "//div[@class='products ng-scope']/child::ul") 
 	private static WebElement ProductListbody;
 	
+	@FindBy(xpath = "//div[@class='alert alert-success']")
+	private static WebElement SuccessMsg;
+	
 //	WebElement itemBody = driver.findElement(By.xpath("/html/body/div[3]/div/form/table/tbody/tr/td["+(row+1)+"]/img"));
 	
 	

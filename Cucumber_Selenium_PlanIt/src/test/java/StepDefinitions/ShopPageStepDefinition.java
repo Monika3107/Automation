@@ -7,6 +7,8 @@ import java.util.Map;
 import com.PageObjects.CartPage;
 import com.PageObjects.ShopPage;
 import com.qa.factory.DriverFactory;
+
+import context.World;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
@@ -48,7 +50,7 @@ public class ShopPageStepDefinition {
 			String item = columns.get("Item");
 			int number = Integer.parseInt(columns.get("Quantity"));
 			shopPage.addItemsToCart(item, number);
-			world.itemsFromShopPage.put(item, shopPage.getPrice(item, number));
+			world.getItemsFromShopPage().put(item, shopPage.getPrice(item, number));
 		}
 		Thread.sleep(5000);
 	}

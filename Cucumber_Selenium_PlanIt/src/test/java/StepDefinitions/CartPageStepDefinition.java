@@ -1,12 +1,16 @@
 package StepDefinitions;
 
 import static org.junit.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import com.PageObjects.CartPage;
 import com.qa.factory.DriverFactory;
+
+import context.World;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;	
@@ -61,7 +65,7 @@ public class CartPageStepDefinition {
 		for (Map<String, String> columns : rows) {
 			String item = columns.get("Item");
 			String quantity = columns.get("Quantity");
-			String finalprice = "$"+BigDecimal.valueOf(Double.parseDouble(world.itemsFromShopPage.get(item).substring(1))*Integer.parseInt(quantity)).setScale(2,BigDecimal.ROUND_HALF_UP);
+			String finalprice = "$"+BigDecimal.valueOf(Double.parseDouble(world.getItemsFromShopPage().get(item).substring(1))*Integer.parseInt(quantity)).setScale(2,BigDecimal.ROUND_HALF_UP);
 			assertEquals(finalprice,cartPage.getPriceOfItemInCart(item));
 		}
 	}
@@ -76,5 +80,41 @@ public class CartPageStepDefinition {
 			cartPage.updateQuantityInCart(item, quantity);
 		}
 	}
+	
+	@When("user clicks on Checkout button")
+	public void user_clicks_on_checkout_button() {
+		cartPage.clickOnCheckOut();
+	}
+
+	@When("user enter delivery details")
+	public void user_enter_delivery_details(io.cucumber.datatable.DataTable dataTable) {
+		Map<String, String> map = dataTable.asMap(String.class, String.class);
+		world.setCustomerName(map.get("Forename"));
+		for (Map.Entry<String, String> entry : map.entrySet()) {
+			cartPage.populateField(entry.getKey(), entry.getValue());
+		}
+		
+	}
+	
+	@When("user enter payment details")
+	public void user_enter_payment_details(io.cucumber.datatable.DataTable dataTable) {
+		Map<String, String> map = dataTable.asMap(String.class, String.class);
+		
+		for (Map.Entry<String, String> entry : map.entrySet()) {
+			cartPage.populateField(entry.getKey(), entry.getValue());
+		}
+	}
+	
+	@When("user clicks on Submit button")
+	public void user_clicks_on_submit_button() {
+		cartPage.submitDeliveryandPaymentDetails();
+	}
+	
+	@Then("user succesfully checks out")
+	public void user_succesfully_checks_out() {
+		System.out.println("Message :: "+cartPage.getSuccesfulCheckoutMsg());
+		assertTrue(cartPage.getSuccesfulCheckoutMsg().contains("Thanks "+world.getCustomerName()+", your order has been accepted. Your order nuumber is "), "Checkout not successfull");
+	}
+
 
 }

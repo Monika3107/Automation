@@ -37,7 +37,7 @@ public class ContactPage {
 	@FindBy(id = "message")
 	private static WebElement Message;
 	
-	@FindBy(xpath = "//div[@class=\"alert alert-success\"]")
+	@FindBy(xpath = "//div[@class='alert alert-success']")
 	private static WebElement SuccessMsg;
 
 	@FindBy(id = "telephone-err")
