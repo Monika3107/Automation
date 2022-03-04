@@ -44,6 +44,7 @@ public class AppHooks extends Base {
 	public void tearDown(Scenario scenario) {
 		quitDriver(driver);
 		if(scenario.isFailed()) {
+			//testing
 			//take screenshot
 			String screenshotName=scenario.getName().replaceAll("", "_");
 			byte [] sourcePath=((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
