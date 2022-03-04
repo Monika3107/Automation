@@ -20,7 +20,6 @@ public class Base {
 		//test
 
 
-		//test
 		configReader= new ConfigReader();
 		return configReader.init_prop();
 	}
