@@ -18,6 +18,9 @@ public class Base {
 	
 	public Properties getProperty() {
 		//test
+
+
+		//test
 		configReader= new ConfigReader();
 		return configReader.init_prop();
 	}
